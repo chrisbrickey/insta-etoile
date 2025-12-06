@@ -21,8 +21,8 @@ class Signup extends React.Component {
     this.demoLogin = this.demoLogin.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (this.props.formType !== newProps.formType) {
+  componentDidUpdate(prevProps) {
+    if (this.props.formType !== prevProps.formType) {
       this.props.clearErrors();
     }
   }

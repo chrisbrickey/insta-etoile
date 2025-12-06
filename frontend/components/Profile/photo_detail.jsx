@@ -35,24 +35,31 @@ class PhotoDetail extends React.Component {
       this.props.fetchAllPhotos();
     }
 
-  componentWillReceiveProps(nextProps) {
-
-    if (nextProps.currentPhoto && this.state.photo.id !== nextProps.currentPhoto.id){
-      const newState = merge({}, this.state);
-      newState.photo.id = nextProps.currentPhoto.id;
-      newState.photo.caption = nextProps.currentPhoto.caption;
-      newState.photo.location = nextProps.currentPhoto.location;
-      this.setState(newState);
+  componentDidUpdate(prevProps, prevState) {
+    // Update state when currentPhoto ID changes
+    if (this.props.currentPhoto &&
+        prevProps.currentPhoto?.id !== this.props.currentPhoto.id) {
+      this.setState({
+        photo: {
+          id: this.props.currentPhoto.id,
+          caption: this.props.currentPhoto.caption,
+          location: this.props.currentPhoto.location
+        }
+      });
     }
 
-  }
-
-  componentDidUpdate( _ , prevState) {
-    if (this.props.currentPhoto && Object.keys(this.props.currentPhoto) && !prevState.modalOpen && this.state.modalOpen) {
-      const newState = merge({}, this.state);
-      newState.photo.caption = this.props.currentPhoto.caption;
-      newState.photo.location = this.props.currentPhoto.location;
-      this.setState(newState);
+    // Update state when modal opens
+    if (this.props.currentPhoto &&
+        Object.keys(this.props.currentPhoto).length &&
+        !prevState.modalOpen &&
+        this.state.modalOpen) {
+      this.setState({
+        photo: {
+          ...this.state.photo,
+          caption: this.props.currentPhoto.caption,
+          location: this.props.currentPhoto.location
+        }
+      });
     }
   }
 
