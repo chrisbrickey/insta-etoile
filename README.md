@@ -89,6 +89,10 @@ npx webpack --watch
 guard
 ```
 
+To reset the database (drop, create, migrate, and seed in one command):
+```
+bundle exec rails db:reset
+```
 
 ## Future Development
 
