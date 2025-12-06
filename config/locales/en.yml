@@ -31,25 +31,3 @@
 
 en:
   hello: "Hello world"
-
-  CLOUD_NAME: "dckkkjkuz"
-  UPLOAD_PRESET: "n440adct"
-
-  development:
-  cloud_name: dckkkjkuz
-  api_key: '522258188111996'
-  api_secret: 7vxsm924V-Eshxa681kIDh3Daig
-  enhance_image_tag: true
-  static_image_support: false
-production:
-  cloud_name: dckkkjkuz
-  api_key: '522258188111996'
-  api_secret: 7vxsm924V-Eshxa681kIDh3Daig
-  enhance_image_tag: true
-  static_image_support: true
-test:
-  cloud_name: dckkkjkuz
-  api_key: '522258188111996'
-  api_secret: 7vxsm924V-Eshxa681kIDh3Daig
-  enhance_image_tag: true
-  static_image_support: false

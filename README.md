@@ -1,7 +1,10 @@
 # insta-étoile
 
-[insta-étoile](www.insta-étoile.com) is a full-stack web app inspired by Instagram.  Danseur Étoile (literally 'star dancer' in French) is the highest rank within the Paris Opera Ballet. insta-étoile provides a visual platform to enable performing artists of all kinds to instantly share and showcase photos of their craft while building a community of supporters and followers. insta-étoile will further the careers of performing artists by broadcasting their experience in a beautiful and digestible format, linking robust immersive profiles with an artist's community and following.
+[insta-étoile](www.insta-étoile.com) is a full-stack web app. Through reverse-engineering, I attempted to mimic the functionality, look, and feel of Instagram.
 
+## Background
+Danseuse/Danseur Étoile (literally 'star dancer' in French) is the highest rank within the Paris Opera Ballet. 
+insta-étoile provides a visual platform to enable performing artists of all kinds to instantly share and showcase photos of their craft while building a community of supporters and followers.
 
 ## Features Highlight
 
@@ -53,19 +56,38 @@ insta-étoile is a single-page web application that utilizes a Rails5 backend an
 [schema]: docs/schema.md
 
 
-## How to Run Locally
-1. Clone this repo
-2. Change your local Ruby version to match the version specified in the Gemfile
-3. Install ruby gems
-  - `bundle install`
-4. Install node modules
-  - `npm install`
-5. In one terminal window, run the rails server
-  - `rails s`
-6. In a second terminal window, run webpack to manage frontend assets
-  - `webpack --watch`
-7. In a third terminal window, activate hot reload to make development more efficient
-  - `guard`
+## Local Development
+1. Set up Ruby 3.3.6 using rbenv
+   - Check if Ruby 3.3.6 is already installed: `rbenv versions`
+   - If not listed, install it: `rbenv install 3.3.6`
+   - The `.ruby-version` file will automatically activate 3.3.6 when you're in this directory
+   - Verify the correct version is active: `ruby --version` (should show 3.3.6)
+
+2. Install ruby gems 
+```
+bundle install
+```
+_NB: If you change Ruby versions, you must re-run `bundle install` to reinstall gems with the new Ruby version._
+
+3. Install node modules
+```
+npm install
+```
+
+4. In one terminal window, run the rails server
+```
+bundle exec rails server
+```
+
+5. In a second terminal window, run webpack to manage frontend assets
+```
+npx webpack --watch
+```
+
+6. In a third terminal window, activate hot reload to make development more efficient
+```
+guard
+```
 
 
 ## Future Development

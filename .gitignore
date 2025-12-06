@@ -22,3 +22,9 @@ npm-debug.log
 
 # rbenv files
 .ruby-version
+
+# ide
+.idea/
+
+# AI assistants
+.claude/
