@@ -46,24 +46,40 @@ export const photoReducer = (state = defaultState, action) => {
 
     case RECEIVE_PHOTO_LIKE:
 
-      newState = merge({}, state);
-      const photo = newState.byId[action.photoLike.likableId];
-      photo.likesCount += 1;
-      photo.usersWhoLike.push(action.photoLike.userId);
-      photo.likedByCurrentUser = true;
+      const likePhotoId = action.photoLike.likableId;
+      const likedPhoto = state.byId[likePhotoId];
 
-      return newState;
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [likePhotoId]: {
+            ...likedPhoto,
+            likesCount: likedPhoto.likesCount + 1,
+            usersWhoLike: [...likedPhoto.usersWhoLike, action.photoLike.userId],
+            likedByCurrentUser: true
+          }
+        }
+      };
 
 
     case REMOVE_PHOTO_LIKE:
 
-      newState = merge({}, state);
-      const anotherPhoto = newState.byId[action.photoLike.likableId];
-      anotherPhoto.likesCount -= 1;
-      anotherPhoto.usersWhoLike.splice(anotherPhoto.usersWhoLike.indexOf(action.photoLike.userId), 1)
-      anotherPhoto.usersWhoLike.push(action.photoLike.userId);
-      anotherPhoto.likedByCurrentUser = false;
-      return newState;
+      const unlikePhotoId = action.photoLike.likableId;
+      const unlikedPhoto = state.byId[unlikePhotoId];
+
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [unlikePhotoId]: {
+            ...unlikedPhoto,
+            likesCount: unlikedPhoto.likesCount - 1,
+            usersWhoLike: unlikedPhoto.usersWhoLike.filter(id => id !== action.photoLike.userId),
+            likedByCurrentUser: false
+          }
+        }
+      };
 
     case RECEIVE_COMMENT:
 

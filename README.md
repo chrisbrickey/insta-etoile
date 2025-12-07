@@ -89,6 +89,15 @@ npx webpack --watch
 guard
 ```
 
+To run tests:
+```
+# run all tests
+rails test:system
+
+# run a specific test file
+rails test test/system/likes_test.rb
+```
+
 To reset the database (drop, create, migrate, and seed in one command):
 ```
 bundle exec rails db:reset
